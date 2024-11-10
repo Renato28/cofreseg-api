@@ -34,7 +34,7 @@ public class CustomersRepository : ICustomersRepository {
     }
 
   
-    public async Task UpdateCustomer(Customers customers)
+    public async Task UpdateCustomer2(Customers customers)
     {
         var query = @"
             UPDATE Customers 

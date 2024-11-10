@@ -36,10 +36,10 @@ namespace apiweb.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> updateCustomer(int id)
+        public async Task<IActionResult> updateCustomer(Customers customers)
         {
-            await _customersRepository.UpdateCustomer2(id);
-            return Ok(id);
+            await _customersRepository.UpdateCustomer2(customers);
+            return Ok(customers);
         }
 
     }
