@@ -33,29 +33,27 @@ public class CustomersRepository : ICustomersRepository {
         return value > 0;
     }
 
-    public async Task UpdateCustomer2(int id)
+  
+    public async Task UpdateCustomer(Customers customers)
     {
-       var query = "UPDATE CUSTOMERS SET NAME = @NAME, CPF = @CPF, RG = @RG, BIRTH_DATE = @BIRTH_DATE, ADDRESS = @ADDRESS, PHONE_NUMBER = @PHONE_NUMBER, EMAIL = @EMAIL, CREATE_DATE = @CREATE_DATE WHERE CUSTOMER_ID = @CUSTOMER_ID";
-        await _dbConnection.ExecuteAsync(query);
+        var query = @"
+            UPDATE Customers 
+            SET 
+                NAME = @NAME, 
+                CPF = @CPF, 
+                RG = @RG, 
+                BIRTH_DATE = @BIRTH_DATE, 
+                ADDRESS = @ADDRESS, 
+                PHONE_NUMBER = @PHONE_NUMBER, 
+                EMAIL = @EMAIL, 
+                CREATE_DATE = @CREATE_DATE 
+            WHERE 
+                CUSTOMER_ID = @CUSTOMER_ID";
 
+       
+        await _dbConnection.ExecuteAsync(query, customers);
     }
-    // public async Task UpdateCustomer(int id)
-    // {
-    //   var query = @"UPDATE CUSTOMERS 
-    //     SET NAME = @NAME, 
-    //       CPF = @CPF, 
-    //       RG = @RG, 
-    //       BIRTH_DATE = @BIRTH_DATE, 
-    //       ADDRESS = @ADDRESS, 
-    //       PHONE_NUMBER = @PHONE_NUMBER, 
-    //       EMAIL = @EMAIL, 
-    //       CREATE_DATE = @CREATE_DATE 
-    //     WHERE 
-    //     CUSTOMER_ID = @CUSTOMER_ID";
 
-    //    await _dbConnection.ExecuteAsync(query);
-      
-    // }
 
       public async Task DeleteCustomerById(int id)
     {
